@@ -1,0 +1,38 @@
+
+body{
+    margin:60px;
+    
+}
+input{
+    border-radius: 5px;
+    background-color: #def;
+    width: 30px;
+    align-content: center;
+}
+table{
+    border-collapse: collapse;
+    background-color: blanchedalmond;
+}
+table, td, th {
+    border: 2px solid rgb(219, 136, 12);
+    padding:20px;
+    width: 90px;
+}
+
+button{
+   
+    margin: 30px;
+    text-decoration: none;
+    padding: 10px;
+    font-weight: 600;
+    font-size: 20px;
+    color: #ffffff;
+    background-color: rgb(219, 136, 12);
+    
+    border-radius: 6px;
+    
+}
+.formula{
+    float: left;
+    margin-top: 20px;
+}
