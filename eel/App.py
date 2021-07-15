@@ -73,6 +73,7 @@ def obtener(Xlist,Ylist,div):
     plt.title('Diferencias Divididas - Newton')
     polinomio2=str.replace(str(polinomio),"*", "")
     
+    
     retorno = ["","-----------Reemplazamos en la Fórmula----------- " ,"", str(polinomio2), "", "-------------------Simplificamos----------------","", str(latex(polisimple))]
     
     
