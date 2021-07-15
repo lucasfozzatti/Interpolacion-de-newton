@@ -3,6 +3,9 @@ import sys
 import numpy as np
 import sympy as sym
 import matplotlib.pyplot as plt
+from sympy import *
+import pprint
+
 sys.path.append("..")
 eel.init("interpolacion-de-newton/htmls")
 
@@ -48,13 +51,15 @@ def obtener(Xlist,Ylist,div):
     pfi = px(pxi)
 
     # SALIDA
+    init_printing()
     np.set_printoptions(precision = 4)
     print('dDividida: ')
     print(dDividida)
     print('polinomio: ')
     print(polinomio)
     print('polinomio simplificado: ' )
-    print(polisimple)
+    print(latex(polisimple))
+    
 
     plt.plot(xi,fi,'o', label = 'Puntos')
     ##for i in range(0,n,1):
@@ -66,7 +71,7 @@ def obtener(Xlist,Ylist,div):
     plt.title('Diferencias Divididas - Newton')
     
     
-    retorno = ["","-----------Reemplazamos en la Fórmula----------- " ,"", str(polinomio), "", "-------------------Simplificamos----------------","", str(polisimple)]
+    retorno = ["","-----------Reemplazamos en la Fórmula----------- " ,"", str(polinomio), "", "-------------------Simplificamos----------------","", str(latex(polisimple))]
     
     
     return retorno
