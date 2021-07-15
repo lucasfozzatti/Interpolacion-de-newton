@@ -13,7 +13,7 @@
     
     <script  type ="text/javascript" src = "interpolacion.js"> </script>
 
-    <script type="text/javascript" src = "python.js"></script>  
+    
     
 </head>
 
@@ -21,7 +21,7 @@
 
 <body class="body">
     
-    
+  <div style = "position:relative"> 
     <h1>Interpolación por Newton</h1>
     <h2>Diferencias Divididas</h2>
     
@@ -55,16 +55,17 @@
        
     </table>
     </div>
-    <button id="btn_guardar" onclick="work()">Calcular</button>
+    
     <div class="formula">
         $$ {F([X_i,X_j]) =\frac{f(X_i)-f(X_j)}{X_i-X_j}=}$$
          <!-- [\sum^m_{i=1}(h_\theta(x^{(i)}) - y^{(i)})2 + \lambda\sum^n_{j=1}\theta^2_j} $$ -->
     </div>
-    <input type="button" value="Genera una tabla" onclick="genera_tabla()">
-    <input type="submit" value= "Click" onclick="obtenerDesdePython()">
-    <div id= "contenedor">
+    
+    <button class= "polinomio-button" onclick="obtenerDesdePython(); grafico()">Desarrollar y Gráficar</button>
+    <div class = "contenedor" id= "contenedor" >
          
     </div>  
     
+    </div> 
 </body>
 </html>

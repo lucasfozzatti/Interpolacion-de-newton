@@ -32,7 +32,18 @@ button{
     border-radius: 6px;
     
 }
+.contenedor{
+    
+    font-size: 30px ;
+    
+}
+
 .formula{
     float: left;
     margin-top: 20px;
+}
+.polinomio-button{
+
+
+
 }

@@ -4,6 +4,8 @@ var xlist = []
 var ylist = []
 var divlist = []
 var div2list = []
+var div3list = []
+var div4list = []
 var count = 0
 var count1 = 5
 var count2 = 0
@@ -13,6 +15,7 @@ var n1 = 0
 var n3 = 0
 var n4 = 0
 var n5 = 0
+var alldivs = []
 // Reducir código (meter todo en una function)
 
 
@@ -27,9 +30,11 @@ function guardar(){
 
   if (xlist.length >1){
     var X = (parseFloat(-xlist[n1]) + parseFloat(xlist[n1+1]))
-    var Y = (parseInt(-ylist[n1]) + parseInt(ylist[n1+1]))
+    var Y = (parseFloat(-ylist[n1]) + parseFloat(ylist[n1+1]))
     var div = Y/X
+    
     divlist.push(div)
+    
     n1+=1
   } 
   if (xlist.length > 2){
@@ -37,19 +42,28 @@ function guardar(){
     var divs = (parseFloat(-divlist[n3]) + parseFloat(divlist[n3+1]))
     var div2 = divs/X1
     div2list.push(div2)
+    
+    console.log("primero","1", -xlist[n3],"2", xlist[n3+2])
+    console.log("1", -divlist[n3],"2", divlist[n3+1])
+    console.log("div2",div2, "X", X1, "Y", divs)
+   
     n3 += 1
   }
   if (xlist.length > 3){
     var X2 = (parseFloat(-xlist[n4]) + parseFloat(xlist[n4+3]))
-    var divs1 = (parseFloat(-divlist[n4]) + parseFloat(divlist[n4+1]))
+    var divs1 = (parseFloat(-div2list[n4]) + parseFloat(div2list[n4+1]))
     var div3 = divs1/X2
-   
+    div3list.push(div3)
+    console.log("segundo","1", -xlist[n4],"2", xlist[n4+3])
+    console.log("1", -div2list[n4],"2", div2list[n4+1])
+    console.log("div3",div3, "X", X2, "Y", divs1)
     n4 += 1
   }
   if (xlist.length > 4){
     var X2 = (parseFloat(-xlist[n5]) + parseFloat(xlist[n5+4]))
-    var divs1 = (parseFloat(-divlist[n5]) + parseFloat(divlist[n5+1]))
+    var divs1 = (parseFloat(-div3list[n5]) + parseFloat(div3list[n5+1]))
     var div4 = divs1/X2
+    div4list.push(div4)
    
     n5 += 1
   }
@@ -63,6 +77,7 @@ function guardar(){
 
     var td = document.createElement("TD");
     var textoCelda = document.createTextNode(div)
+
     btn.appendChild(td);
     td.appendChild(textoCelda)
     
@@ -115,13 +130,20 @@ function guardar(){
   count1 -= 1
   
 }
+function obtenerDesdePython(){
+  alldivs.push(divlist[0],div2list[0],div3list[0],div4list[0])
 
-var column = "<th>$${Δ^2f(x)}$$<th>"
-  
-  columns = document.getElementById("tr-principal");
-  var tr = document.createElement("Th");
-  tr.innerHTML=column;
-  columns.appendChild(tr);
+  eel.grafico()
+  eel.obtener(xlist, ylist, alldivs)(callback);
+}
+function callback(resultado, a){
+  console.log(resultado)
+  var contenedor = document.getElementById("contenedor")
+  for (var i = 0; i< resultado.length; i++){
+    contenedor.innerHTML += "</br>" + resultado[i];
+  }
+}
+
 
 
 
