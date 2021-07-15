@@ -1,3 +1,4 @@
+from os import replace
 import eel
 import sys
 import numpy as np
@@ -49,7 +50,8 @@ def obtener(Xlist,Ylist,div):
     b = np.max(xi)
     pxi = np.linspace(a,b,muestras)
     pfi = px(pxi)
-
+    
+        
     # SALIDA
     init_printing()
     np.set_printoptions(precision = 4)
@@ -69,9 +71,9 @@ def obtener(Xlist,Ylist,div):
     plt.xlabel('xi')
     plt.ylabel('fi')
     plt.title('Diferencias Divididas - Newton')
+    polinomio2=str.replace(str(polinomio),"*", "")
     
-    
-    retorno = ["","-----------Reemplazamos en la Fórmula----------- " ,"", str(polinomio), "", "-------------------Simplificamos----------------","", str(latex(polisimple))]
+    retorno = ["","-----------Reemplazamos en la Fórmula----------- " ,"", str(polinomio2), "", "-------------------Simplificamos----------------","", str(latex(polisimple))]
     
     
     return retorno
