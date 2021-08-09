@@ -5,7 +5,7 @@ import numpy as np
 import sympy as sym
 import matplotlib.pyplot as plt
 from sympy import *
-import pprint
+
 
 sys.path.append("..")
 eel.init("interpolacion-de-newton/htmls")
@@ -16,7 +16,6 @@ ylist = []
 @eel.expose                         # PASAR PARAMETROS DE LOS RESULTADOS
 def obtener(Xlist,Ylist,div):
 
-    xi = np.array(Xlist)
     for m in range(len(Xlist)):
         xlist.append(float(Xlist[m]))
     for m in range(len(Ylist)):
@@ -24,12 +23,11 @@ def obtener(Xlist,Ylist,div):
     xi = np.array(xlist)    
     fi = np.array(ylist)
     n = len(xi)
-    dfinita = np.zeros(shape=(n,n),dtype=float)
     dDividida = div
-    n = len(dfinita)
-    print(xlist,dDividida)
+    # dfinita = np.zeros(shape=(n,n),dtype=float)
+    # n = len(dfinita)
+    # print("n",n,"dfinita",dfinita,"xi",xi)
     x = sym.Symbol('x')
-    
     polinomio = fi[0]
     for j in range(1,n,1):
         factor = dDividida[j-1]
@@ -37,32 +35,20 @@ def obtener(Xlist,Ylist,div):
         for k in range(0,j,1):
             termino = termino*(x-xi[k])
         polinomio = polinomio + termino*factor
-
+        
     # simplifica multiplicando entre (x-xi)
     polisimple = polinomio.expand()
-
     # polinomio para evaluacion numérica
     px = sym.lambdify(x,polisimple)
-
     # Puntos para la gráfica
-    muestras = 101
     a = np.min(xi)
     b = np.max(xi)
-    pxi = np.linspace(a,b,muestras)
+    pxi = np.linspace(a,b,101)
     pfi = px(pxi)
     
-        
     # SALIDA
     init_printing()
     np.set_printoptions(precision = 4)
-    print('dDividida: ')
-    print(dDividida)
-    print('polinomio: ')
-    print(polinomio)
-    print('polinomio simplificado: ' )
-    print(latex(polisimple))
-    
-
     plt.plot(xi,fi,'o', label = 'Puntos')
     ##for i in range(0,n,1):
     ##    plt.axvline(xi[i],ls='--', color='yellow')
@@ -74,10 +60,10 @@ def obtener(Xlist,Ylist,div):
     polinomio2=str.replace(str(polinomio),"*", "")
     
     
-    retorno = ["","-----------Reemplazamos en la Fórmula----------- " ,"", str(polinomio2), "", "-------------------Simplificamos----------------","", str(latex(polisimple))]
+    desarrollo = ["","-----------Reemplazamos en la Fórmula----------- " ,"", str(polinomio2), "", "-------------------Simplificamos----------------","", str(latex(polisimple))]
     
     
-    return retorno
+    return desarrollo
 @eel.expose    
 def grafico():
    plt.show()    
